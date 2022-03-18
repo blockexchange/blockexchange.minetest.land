@@ -1,0 +1,48 @@
+---
+- hosts: all
+  remote_user: root
+  become: yes
+  become_method: sudo
+  vars:
+    compose_directory: /data/blockexchange.minetest.land
+  tasks:
+    - name: Copy compose files
+      template:
+        src: "{{item}}"
+        dest: "{{compose_directory}}/{{item}}"
+      with_items:
+        - "docker-compose.yml"
+        - "blockexchange.env"
+
+    - name: Copy data files
+      copy:
+        src: ./data
+        dest: "{{ compose_directory }}/"
+
+    - name: Update green deployment
+      docker_compose:
+        project_src: "{{ compose_directory }}"
+        pull: yes
+        services:
+         - blockexchange_green
+
+    - name: Wait for container start
+      pause:
+        seconds: 10
+
+    - name: Update blue deployment
+      docker_compose:
+        project_src: "{{ compose_directory }}"
+        pull: yes
+        services:
+         - blockexchange_blue
+
+    - name: Start auxilliary services
+      docker_compose:
+        project_src: "{{ compose_directory }}"
+        remove_orphans: yes
+
+    - name: reload nginx config
+      shell:
+        cmd: "docker-compose exec nginx nginx -s reload"
+        chdir: "{{ compose_directory }}"
