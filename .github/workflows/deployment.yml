@@ -26,3 +26,10 @@ jobs:
     - name: Run ansible
       run: |
         ansible-playbook -i hosts --vault-password-file ~/.vault_pass.txt --private-key ~/.ssh/id_rsa deploy.yml
+
+    - name: 📧 Discord success notification
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.discord_webhook }}
+      uses: Ilshidur/action-discord@0.3.2
+      with:
+        args: '☑️ Central blockexchange deployment updated
