@@ -9,6 +9,8 @@ services:
    - postgres
   env_file:
    - blockexchange.env
+  labels:
+   - "promtail=true"
   logging:
    options:
     max-size: 50m
@@ -20,6 +22,8 @@ services:
    - postgres
   env_file:
    - blockexchange.env
+  labels:
+   - "promtail=true"
   logging:
    options:
     max-size: 50m
