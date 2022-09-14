@@ -4,7 +4,7 @@
   become: yes
   become_method: sudo
   vars:
-    compose_directory: /data/blockexchange.minetest.land
+    compose_directory: /data/blockexchange.minetest.ch
   tasks:
     - name: Copy compose files
       template:
