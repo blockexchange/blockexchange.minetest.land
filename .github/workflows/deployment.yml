@@ -33,3 +33,8 @@ jobs:
       uses: Ilshidur/action-discord@0.3.2
       with:
         args: '☑️ Central blockexchange deployment updated'
+
+    - name: curl
+      uses: wei/curl@v1
+      with:
+        args: -H "Title: blockexchange.minetest.ch" -H "Tags: white_check_mark" -d "Build succeeded for ${GITHUB_SHA}" ${{ secrets.NTFY_URL }}
