@@ -34,7 +34,13 @@ jobs:
       with:
         args: '☑️ Central blockexchange deployment updated'
 
-    - name: ntfy notification
+    - name: ntfy success notification
       uses: wei/curl@v1
       with:
         args: -H "Title:blockexchange.minetest.ch" -H "Tags:white_check_mark" -d 'Build succeeded for ${{github.sha}}' ${{ secrets.NTFY_URL }}
+
+    - name: ntfy failure notification
+      if: failure()
+      uses: wei/curl@v1
+      with:
+        args: -H "Title:blockexchange.minetest.ch" -H "Tags:warning" -d 'Build failed for ${{github.sha}}' ${{ secrets.NTFY_URL }}
