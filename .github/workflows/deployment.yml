@@ -37,4 +37,4 @@ jobs:
     - name: ntfy notification
       uses: wei/curl@v1
       with:
-        args: -H "Title:blockexchange.minetest.ch" -H "Tags:white_check_mark" -d "Build succeeded for ${GITHUB_SHA}" ${{ secrets.NTFY_URL }}
+        args: -H "Title:blockexchange.minetest.ch" -H "Tags:white_check_mark" -d "Build succeeded for ${{github.sha}}" ${{ secrets.NTFY_URL }}
