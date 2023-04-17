@@ -29,7 +29,7 @@ services:
     max-size: 50m
 
  redis:
-  image: redis:7.0.10-alpine
+  image: redis:7.0.11-alpine
   restart: always
   labels:
    - "promtail=true"
