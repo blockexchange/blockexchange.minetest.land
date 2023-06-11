@@ -5,7 +5,7 @@ minetest blockexchange infrastructure code
 
 # Overview
 
-This repository deploys the `blockexchange_server` application on its `latest` image to https://blockexchange.minetest.land
+This repository deploys the `blockexchange_server` application on its `latest` image to https://blockexchange.minetest.ch
 
 ## Manual deployment
 
