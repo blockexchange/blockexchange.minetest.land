@@ -1,7 +1,7 @@
 minetest blockexchange infrastructure code
 
-[![deploy](https://github.com/blockexchange/blockexchange.minetest.land/actions/workflows/deployment.yml/badge.svg)](https://github.com/blockexchange/blockexchange.minetest.land/actions/workflows/deployment.yml)
-[![validate](https://github.com/blockexchange/blockexchange.minetest.land/actions/workflows/validate.yml/badge.svg)](https://github.com/blockexchange/blockexchange.minetest.land/actions/workflows/validate.yml)
+[![deploy](https://github.com/blockexchange/blockexchange.minetest.ch/actions/workflows/deployment.yml/badge.svg)](https://github.com/blockexchange/blockexchange.minetest.ch/actions/workflows/deployment.yml)
+[![validate](https://github.com/blockexchange/blockexchange.minetest.ch/actions/workflows/validate.yml/badge.svg)](https://github.com/blockexchange/blockexchange.minetest.ch/actions/workflows/validate.yml)
 
 # Overview
 
