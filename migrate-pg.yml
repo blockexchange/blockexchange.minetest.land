@@ -1,0 +1,33 @@
+---
+- hosts: all
+  remote_user: root
+  become: true
+  become_method: sudo
+  vars:
+    compose_directory: /data/blockexchange.minetest.ch
+  tasks:
+    - name: Copy config files
+      template:
+        src: "{{item}}"
+        dest: "{{compose_directory}}/{{item}}"
+      with_items:
+        - "docker-compose.yml"
+
+    - name: migrate postgres
+      shell: |
+        docker-compose exec postgres pg_dumpall -U postgres > dump.sql
+        docker-compose stop
+        rm -rf data/postgres_old
+        mv data/postgres data/postgres_old
+        docker-compose up -d postgres
+        sleep 5
+        cat dump.sql | docker-compose exec -T postgres psql -U postgres
+      args:
+        chdir: "{{compose_directory}}/"
+
+    - name: Create and start services
+      community.general.docker_compose:
+        project_src: "{{ compose_directory }}"
+        pull: true
+        build: true
+        remove_orphans: true

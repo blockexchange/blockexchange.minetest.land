@@ -6,7 +6,7 @@
   vars:
     compose_directory: /data/blockexchange.minetest.ch
   tasks:
-    - name: Copy compose files
+    - name: Copy config files
       template:
         src: "{{item}}"
         dest: "{{compose_directory}}/{{item}}"
@@ -14,11 +14,6 @@
         - "docker-compose.yml"
         - "blockexchange.env"
         - "haproxy.cfg"
-
-    - name: Copy data files
-      copy:
-        src: ./data
-        dest: "{{ compose_directory }}/"
 
     - name: Update green deployment
       docker_compose:
