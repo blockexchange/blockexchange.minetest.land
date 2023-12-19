@@ -41,8 +41,3 @@
       docker_compose:
         project_src: "{{ compose_directory }}"
         remove_orphans: yes
-
-    - name: reload nginx config
-      shell:
-        cmd: "docker-compose exec nginx nginx -s reload"
-        chdir: "{{ compose_directory }}"
