@@ -35,7 +35,7 @@ services:
    - "promtail=true"
 
  postgres:
-  image: postgres:14.10
+  image: postgres:16.1
   restart: always
   shm_size: '2gb'
   environment:
