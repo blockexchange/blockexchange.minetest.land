@@ -55,7 +55,7 @@ services:
     max-size: 50m
 
  haproxy:
-  image: haproxy:2.9.4
+  image: haproxy:2.9.5
   networks:
    - terminator
    - default
