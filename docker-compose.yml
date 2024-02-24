@@ -9,6 +9,8 @@ services:
    - postgres
   env_file:
    - blockexchange.env
+  environment:
+   - EXECUTE_JOBS=true
   labels:
    - "promtail=true"
   logging:
