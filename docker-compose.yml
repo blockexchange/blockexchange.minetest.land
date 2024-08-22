@@ -2,7 +2,7 @@ version: "2"
 
 
 services:
- blockexchange_blue:
+ blockexchange_passive:
   image: blockexchange/blockexchange
   restart: always
   depends_on:
@@ -17,7 +17,7 @@ services:
    options:
     max-size: 50m
 
- blockexchange_green:
+ blockexchange_active:
   image: blockexchange/blockexchange
   restart: always
   depends_on:
@@ -57,8 +57,8 @@ services:
    - default
   restart: always
   depends_on:
-   - blockexchange_blue
-   - blockexchange_green
+   - blockexchange_passive
+   - blockexchange_active
   labels:
     - "promtail=true"
     - "traefik.enable=true"
