@@ -46,6 +46,8 @@ services:
    - "shared_buffers=4GB"
    - "-c"
    - "synchronous_commit=off"
+   - "-c"
+   - "max_connections=250"
   logging:
    options:
     max-size: 50m
