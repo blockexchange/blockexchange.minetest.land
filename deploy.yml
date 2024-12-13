@@ -16,24 +16,20 @@
         - "haproxy.cfg"
 
     - name: Update active deployment
-      docker_compose:
-        project_src: "{{ compose_directory }}"
-        pull: yes
-        services:
-         - blockexchange_active
-
+      shell:
+        cmd: "docker-compose up -d blockexchange_active"
+        chdir: "{{ compose_directory }}"
+  
     - name: Wait for container start
       pause:
         seconds: 10
 
     - name: Update passive deployment
-      docker_compose:
-        project_src: "{{ compose_directory }}"
-        pull: yes
-        services:
-         - blockexchange_passive
+      shell:
+        cmd: "docker-compose up -d blockexchange_passive"
+        chdir: "{{ compose_directory }}"
 
     - name: Start auxilliary services
-      docker_compose:
-        project_src: "{{ compose_directory }}"
-        remove_orphans: yes
+      shell:
+        cmd: "docker-compose up -d --remove-orphans"
+        chdir: "{{ compose_directory }}"
