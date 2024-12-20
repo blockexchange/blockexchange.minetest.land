@@ -15,6 +15,11 @@
         - "blockexchange.env"
         - "haproxy.cfg"
 
+    - name: Pull latest images
+      shell:
+        cmd: "docker-compose pull"
+        chdir: "{{ compose_directory }}"
+  
     - name: Update active deployment
       shell:
         cmd: "docker-compose up -d blockexchange_active"
